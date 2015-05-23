@@ -8,22 +8,22 @@
 makeCacheMatrix <- function(matx = matrix()) 
 {
         m <- NULL
-		
-		## Use this function to set the matrix
+        
+        ## Use this function to set the matrix
         set <- function(y) 
-		{
+        
             matx <<- y
             m <<- NULL
         }
    
-		get <- function() matx
-		
+        get <- function() matx
+        
         setInverse <- function(invertedMatrix) m <<- invertedMatrix
         getInverse <- function() m
-		
-		list(set=set, get=get,
-		setInverse=setInverse,
-		getInverse=getInverse)		
+        
+        list(set=set, get=get,
+        setInverse=setInverse,
+        getInverse=getInverse)
  }
 
 
@@ -32,13 +32,13 @@ cacheSolve <- function(matx=matrix(), ...)
 {
         m<-matx$getInverse()  ## Attempt to get inverted matrix 
         if(!is.null(m)) 
-		{
-			## The lines below will get invoked when running the function for the second time for the same object
+        {
+            ## The lines below will get invoked when running the function for the second time for the same object
             message("getting cached data")
             return(m)
         }
         data <- matx$get()
         m <- solve(data, ...)  ## whenever it is not stored, calculates the inverse and caches it to re-use it for the second time
         matx$setInverse(m)
-        m		
+        m
 }
