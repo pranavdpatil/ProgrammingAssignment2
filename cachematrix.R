@@ -10,10 +10,11 @@ makeCacheMatrix <- function(matx = matrix())
     m <- NULL
         
     ## Use this function to set the matrix
-    set <- function(y) 
+    set <- function(y)
+    {
          matx <<- y
          m <<- NULL
-        }
+    }
    
     get <- function() matx
         
